@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.datastore.core.DataStore
 import com.leandro1995.protodatastore.UserPreferences
 import com.leandro1995.protodatastore.extension.userPreferencesStore
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 
 object UserDataStore {
@@ -30,5 +31,5 @@ object UserDataStore {
     }
 
     // 4- Obtener el valor de la variable
-    fun nameUser() = runBlocking { dataStore.data.collect { it.nameUser } }
+    fun nameUser(): String = runBlocking { dataStore.data.first().nameUser }
 }
